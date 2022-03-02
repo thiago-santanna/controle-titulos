@@ -24,6 +24,11 @@ public class TitulosController {
 		this.repository = titulosRepository;
 	}
 	
+    @ModelAttribute("statusAll")
+    public List<SituacaoTitulo> todasSituacoes(){
+    	return Arrays.asList(SituacaoTitulo.values());
+    }
+	
     @GetMapping("/novo")
     public ModelAndView cadastrar() {
     	ModelAndView mv = new ModelAndView("CadastroTitulo");
@@ -42,8 +47,11 @@ public class TitulosController {
     	return mv;
     }
     
-    @ModelAttribute("statusAll")
-    public List<SituacaoTitulo> todasSituacoes(){
-    	return Arrays.asList(SituacaoTitulo.values());
+    @GetMapping("/pesquisa")
+    public ModelAndView pesquisar() {
+    	
+    	ModelAndView mv = new ModelAndView("PesquisaTitulo");
+    	return mv;
     }
+   
 }
